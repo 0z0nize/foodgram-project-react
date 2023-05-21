@@ -1,4 +1,4 @@
-![foodgram](https://github.com/0z0nize/foodgram-project-react/assets/112638163/28418645-d00f-49a5-bfd4-05abec0d03d2.png)
+![foodgram](https://github.com/0z0nize/foodgram-project-react/assets/112638163/28418645-d00f-49a5-bfd4-05abec0d03d2)
 
 ### Описание
 
