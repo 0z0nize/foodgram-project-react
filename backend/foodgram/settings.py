@@ -10,22 +10,28 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/3.2/ref/settings/
 """
 
+import os
+
+from dotenv import load_dotenv
 from pathlib import Path
+
+load_dotenv()
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+load_dotenv(os.path.join(BASE_DIR.parent.parent, 'infra/.env'), verbose=True)
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-(t&2bi-g0knfm#33z#!cj*80-d=9jdd(9m3h844r40w5va3j3f'
+SECRET_KEY = os.environ.get('SECRET_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', default='*')]
 
 
 # Application definition
@@ -75,8 +81,14 @@ WSGI_APPLICATION = 'foodgram.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': BASE_DIR / 'db.sqlite3',
+        # 'ENGINE': 'django.db.backends.sqlite3',
+        # 'NAME': BASE_DIR / 'db.sqlite3',
+       'ENGINE': os.environ.get('DB_ENGINE', 'django.db.backends.sqlite3'),
+       'NAME': os.environ.get('POSTGRES_DB', BASE_DIR / 'db.sqlite3'),
+       'USER': os.environ.get('POSTGRES_USER'),
+       'PASSWORD': os.environ.get('POSTGRES_PASSWORD'),
+       'HOST': os.environ.get('DB_HOST'),
+       'PORT': os.environ.get('DB_PORT'),
     }
 }
 
