@@ -6,7 +6,6 @@ from rest_framework.response import Response
 from djoser.views import UserViewSet as DjoserUserViewSet
 
 from users.models import Follow, User
-
 from core.pagination import CustomPagination
 from .serializers import FollowListSerializer, FollowSerializer, UserSerializer
 
