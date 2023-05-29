@@ -7,13 +7,13 @@ load_dotenv()
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-load_dotenv(os.path.join(BASE_DIR.parent.parent, 'infra/.env'), verbose=True)
+load_dotenv(os.path.join(BASE_DIR.parent, 'infra/.env'), verbose=True)
 
 SECRET_KEY = os.environ.get('SECRET_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
 DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
-ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', default='*')]
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', default='*'), 'localhost', '127.0.0.1']
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -25,6 +25,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'rest_framework.authtoken',
     'djoser',
+    'corsheaders',
     'users.apps.UsersConfig',
     'core.apps.CoreConfig',
     'api.apps.ApiConfig',
@@ -33,6 +34,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -108,9 +110,25 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': [
         'rest_framework.authentication.TokenAuthentication',
     ],
+    # 'DEFAULT_FILTER_BACKENDS': [
+    #     'django_filters.rest_framework.DjangoFilterBackend'
+    # ],
     'DEFAULT_PAGINATION_CLASS': [
         'core.pagination.CustomPagination',
     ],
+}
+
+DJOSER = {
+    'LOGIN_FIELD': 'email',
+    'HIDE_USERS': False,
+    'PERMISSIONS': {
+        'user': ['djoser.permissions.CurrentUserOrAdminOrReadOnly'],
+        'user_list': ['rest_framework.permissions.IsAuthenticatedOrReadOnly'],
+    },
+    'SERIALIZERS': {
+        'user': 'api.serializers.UserSerializer',
+        'current_user': 'api.serializers.UserSerializer'
+    },
 }
 
 LANGUAGE_CODE = "ru-Ru"
@@ -127,10 +145,14 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+PAGE_SIZE = 6
+
 DEFAULT_FIELD_LENGTH = 150
 
 DEFAULT_EMAIL_LENGTH = 254
 
 AUTH_USER_MODEL = 'users.User'
 
-PAGE_SIZE = 6
+CORS_ORIGIN_ALLOW_ALL = True
+CORS_URLS_REGEX = r'^/api/.*$'
+CORS_ALLOWED_ORIGINS = ['http://localhost:3000',] 

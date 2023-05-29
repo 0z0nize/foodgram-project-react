@@ -16,6 +16,7 @@ class UserSerializer(DjoserUserSerializer):
             'username',
             'first_name',
             'last_name',
+            'is_subscribed'
         )
 
     def get_is_subscribed(self, obj):
@@ -32,7 +33,7 @@ class FollowListSerializer(UserSerializer):
     recipes_count = serializers.SerializerMethodField(read_only=True)
 
     class Meta(UserSerializer.Meta):
-        fields = UserSerializer.Meta.fields + ('recipes', 'recipes_count')
+        fields = UserSerializer.Meta.fields
         read_only_fields = (
             'id',
             'email',
