@@ -15,22 +15,22 @@ npm i
 npm run start # запуск node
 
 ### Запуск базы данных:
-'''
+```
 docker compose up -d db
-'''
+```
 
 ### Проект доступен по адресу
-'''
+```
 http://localhost:3000/recipes
-'''
+```
 ### Документация
-'''
+```
 http://localhost/api/docs/redoc.html
-'''
+```
 ### Панель админа
-'''
+```
 http://127.0.0.1:8000/admin/
-'''
+```
 
 ### Автор проекта:
 #### [_Владислав Шкаровский_](https://github.com/0z0nize)
