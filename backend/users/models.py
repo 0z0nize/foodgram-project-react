@@ -5,6 +5,8 @@ from django.db import models
 
 
 class User(AbstractUser, UsernameValidatorMixin):
+    USERNAME_FIELD = 'email'
+    REQUIRED_FIELDS = ('username', 'first_name', 'last_name')
     email = models.EmailField(
         verbose_name='Адрес электронной почты',
         max_length=settings.DEFAULT_EMAIL_LENGTH,
@@ -18,9 +20,6 @@ class User(AbstractUser, UsernameValidatorMixin):
         verbose_name='Фамилия',
         max_length=settings.DEFAULT_FIELD_LENGTH,
     )
-
-    USERNAME_FIELD = 'email'
-    REQUIRED_FIELDS = ('username', 'first_name', 'last_name')
 
     class Meta:
         ordering = ('username',)
