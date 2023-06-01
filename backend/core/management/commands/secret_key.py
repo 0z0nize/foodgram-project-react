@@ -4,9 +4,11 @@ from django.core.management.utils import get_random_secret_key
 
 
 class Command(BaseCommand):
+    """Утилита для создания секретного ключа."""
+
     help = 'Generates new SECRET_KEY'
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options) -> None:
         self.stdout.write(
             Fore.GREEN
             + '\nSECRET_KEY: \n'

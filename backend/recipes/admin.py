@@ -1,3 +1,4 @@
+from django.conf import settings
 from django.contrib import admin
 from django.contrib.admin import display
 from django.utils.safestring import mark_safe
@@ -14,12 +15,12 @@ from .models import (
 
 class TagInLine(admin.TabularInline):
     model = Recipe.tags.through
-    min_num = 1
+    min_num = settings.MIN_VALUE
 
 
 class IngredientInLine(admin.TabularInline):
     model = Recipe.ingredients.through
-    min_num = 1
+    min_num = settings.MIN_VALUE
 
 
 @admin.register(Recipe)

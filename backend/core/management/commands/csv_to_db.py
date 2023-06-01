@@ -8,9 +8,12 @@ from recipes.models import Ingredient
 
 
 class Command(BaseCommand):
+    """Переносит данные из файла CSV в базу данных."""
+
     help = "Loads data from csv files"
 
-    def handle(self, *args, **options):
+    def handle(self, *args, **options) -> None:
+        """Создает объекты Tag."""
         self.stdout.write(Fore.BLUE + 'Trying to load ingredients data')
         file_path = os.path.join(settings.DATA_ROOT, 'ingredients.csv')
         with open(file_path, 'r', encoding='utf-8') as f:
