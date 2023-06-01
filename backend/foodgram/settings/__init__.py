@@ -1,5 +1,5 @@
 from split_settings.tools import include
 
-base_settings = ['components/*.py',]
+_base_settings = ['components/*.py',]
 
-include(*base_settings)
+include(*_base_settings)
