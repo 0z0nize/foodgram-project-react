@@ -1,4 +1,5 @@
 import os
+
 from foodgram.settings.components.common import BASE_DIR
 
 STATIC_URL = '/static/'
