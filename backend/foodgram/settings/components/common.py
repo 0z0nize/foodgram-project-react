@@ -13,11 +13,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
 DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
-ALLOWED_HOSTS = [
-    os.environ.get('ALLOWED_HOSTS', default='*'),
-    'localhost',
-    '127.0.0.1',
-]
+ALLOWED_HOSTS = [os.environ.get('ALLOWED_HOSTS', default='*'),]
 
 ROOT_URLCONF = "foodgram.urls"
 

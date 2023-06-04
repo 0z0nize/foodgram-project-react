@@ -15,12 +15,12 @@ UsernameValidator = RegexValidator(
     message='Имя пользователя содержит недопустимый символ',
 )
 
-HEX_Validator = RegexValidator(
+HexValidator = RegexValidator(
     regex='^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$',
     message='Проверьте правильность HEX-кода',
 )
 
-MIN_VALUE_Validator = MinValueValidator(
+MinValidator = MinValueValidator(
     settings.MIN_VALUE,
     message='Значение меньше минимального',
 )

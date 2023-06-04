@@ -1,4 +1,4 @@
-from core.validators import HEX_Validator, MIN_VALUE_Validator
+from core.validators import HexValidator, MinValidator
 from django.conf import settings
 from django.db import models
 from django.db.models import UniqueConstraint
@@ -18,7 +18,7 @@ class Tag(models.Model):
         verbose_name='HEX-код цвета',
         max_length=7,
         unique=True,
-        validators=[HEX_Validator],
+        validators=[HexValidator],
     )
     slug = models.SlugField(
         verbose_name='Слаг',
@@ -88,7 +88,7 @@ class Recipe(models.Model):
 
     cooking_time = models.PositiveSmallIntegerField(
         verbose_name='Время приготовления',
-        validators=[MIN_VALUE_Validator],
+        validators=[MinValidator],
     )
     created = models.DateTimeField(
         verbose_name='Дата публикации', auto_now_add=True
@@ -150,7 +150,7 @@ class IngredientRecipe(models.Model):
     )
     amount = models.PositiveSmallIntegerField(
         verbose_name='Кол-во ингредиента',
-        validators=[MIN_VALUE_Validator],
+        validators=[MinValidator],
     )
 
     class Meta:
