@@ -9,7 +9,7 @@ load_dotenv()
 
 load_dotenv(os.path.join(BASE_DIR.parent, 'infra/.env'), verbose=True)
 
-SECRET_KEY = os.environ.get('SECRET_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
+SECRET_KEY = os.environ.get('DJANGO_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
 DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
