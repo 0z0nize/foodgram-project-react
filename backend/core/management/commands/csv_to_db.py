@@ -34,10 +34,5 @@ class Command(BaseCommand):
         with open(file_path, 'r', encoding='utf-8') as f:
             reader = csv.reader(f)
             for tag, color, slug in reader:
-                Tag.objects.get_or_create(
-                    name=tag, color=color,
-                    slug=slug
-                )
-            self.stdout.write(
-                Fore.GREEN + 'Tags data successfully uploaded'
-            )
+                Tag.objects.get_or_create(name=tag, color=color, slug=slug)
+            self.stdout.write(Fore.GREEN + 'Tags data successfully uploaded')
