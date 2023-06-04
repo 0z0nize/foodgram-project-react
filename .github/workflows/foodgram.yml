@@ -74,8 +74,8 @@ jobs:
           echo CORS_ALLOWED=${{ secrets.CORS_ALLOWED }} >> .env
           sudo docker-compose up -d
           sudo docker-compose exec -T backend python manage.py collectstatic --no-input
-        # sudo docker-compose exec -T backend python manage.py makemigrations
-        # sudo docker-compose exec -T backend python manage.py migrate
+          sudo docker-compose exec -T backend python manage.py makemigrations
+          sudo docker-compose exec -T backend python manage.py migrate
 
   send_message:
     runs-on: ubuntu-20.04
@@ -87,5 +87,3 @@ jobs:
         to: ${{ secrets.TELEGRAM_TO }}
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: ${{ github.workflow }} дипломного проекта успешно выполнен!
-
-#
