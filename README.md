@@ -1,5 +1,7 @@
 ![foodgram_logo1](https://github.com/0z0nize/foodgram-project-react/assets/112638163/6107a549-bf07-4999-aaf0-eb3a334e848f)
 
+[![Test](https://github.com/0z0nize/foodgram-project-react/actions/workflows/foodgram.yml/badge.svg?branch=master)](https://github.com/0z0nize/foodgram-project-react/actions/workflows/foodgram.yml)
+
 ### Описание
 
 Cайт Foodgram «Продуктовый помощник». Онлайн-сервис и API для него. 
