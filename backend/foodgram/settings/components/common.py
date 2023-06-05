@@ -11,13 +11,13 @@ load_dotenv(os.path.join(BASE_DIR.parent, 'infra/.env'), verbose=True)
 
 SECRET_KEY = os.environ.get('DJANGO_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
-DEBUG = True  # os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
+DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
 ALLOWED_HOSTS = [
     '62.84.124.211',
-    'localhost',
+    # 'localhost',
     'backend',
-    '127.0.0.1',
+    # '127.0.0.1',
 ]
 #     os.environ.get('ALLOWED_HOSTS', default='*'),
 # ]
