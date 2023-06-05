@@ -4,7 +4,7 @@ from rest_framework import serializers
 
 
 def not_me_username(value: str) -> str:
-    """Метод запрещает использовать uername 'me'."""
+    """Метод запрещает использовать username 'me'."""
     if value.lower() == 'me':
         raise serializers.ValidationError('Имя пользователя "me"- не доступно')
     return value
