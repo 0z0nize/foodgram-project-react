@@ -13,7 +13,7 @@ SECRET_KEY = os.environ.get('DJANGO_KEY', default='H3R3-Y0UR-S3CR3T-K3Y')
 
 DEBUG = os.environ.get('TEST_ENVIRONMENT', default=False) == 'True'
 
-ALLOWED_HOSTS = ['62.84.124.211', 'backend',]
+ALLOWED_HOSTS = os.environ.get('ALLOWED_HOSTS', default='*').split(' ')
 
 ROOT_URLCONF = "foodgram.urls"
 
