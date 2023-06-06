@@ -78,9 +78,6 @@ jobs:
           sudo docker-compose exec -T backend python manage.py collectstatic --no-input
           sudo docker-compose exec -T backend python manage.py makemigrations
           sudo docker-compose exec -T backend python manage.py migrate
-          sudo docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d 62.84.124.211
-          sudo docker-compose run --rm certbot renew
-          sudo docker image prune -af
 
   send_message:
     runs-on: ubuntu-20.04
