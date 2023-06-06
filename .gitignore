@@ -133,3 +133,4 @@ dmypy.json
 
 infra/database
 frontend/node_modules
+media/
