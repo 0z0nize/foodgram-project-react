@@ -65,7 +65,6 @@ jobs:
           sudo docker image prune -af
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_backend:latest
           sudo docker pull ${{ secrets.DOCKER_USERNAME }}/foodgram_frontend:latest
-          sudo docker pull certbot/certbot:latest
           echo DB_ENGINE=${{ secrets.DB_ENGINE }} > .env
           echo DB_NAME=${{ secrets.DB_NAME }} >> .env
           echo POSTGRES_USER=${{ secrets.POSTGRES_USER }} >> .env
@@ -79,7 +78,7 @@ jobs:
           sudo docker-compose exec -T backend python manage.py collectstatic --no-input
           sudo docker-compose exec -T backend python manage.py makemigrations
           sudo docker-compose exec -T backend python manage.py migrate
-          sudo docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d example.org
+          sudo docker-compose run --rm  certbot certonly --webroot --webroot-path /var/www/certbot/ -d 62.84.124.211
           sudo docker-compose run --rm certbot renew
           sudo docker image prune -af
 
