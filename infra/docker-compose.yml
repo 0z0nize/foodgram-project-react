@@ -2,7 +2,7 @@ version: '3.3'
 services:
 
   db:
-    image: postgres    server_name test-site.ddns.net;
+    image: postgres
     ports:
       - "5432:5432"
     volumes:
@@ -26,7 +26,7 @@ services:
   frontend:
     image: 0z0nize/foodgram_frontend:latest
     volumes:
-      - frontend_value:/app/result_build/build
+      - ../frontend/:/app/result_build/
     depends_on:
       - db
     container_name: frontend
@@ -38,8 +38,8 @@ services:
       - "433:433"
     volumes:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
-      - frontend_value:/usr/share/nginx/html/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
       - www-html:/var/www/html
@@ -65,5 +65,4 @@ volumes:
   media_value:  
   www-html:
   etc-letsencrypt:
-  frontend_value:
   
