@@ -2,7 +2,7 @@ version: '3.3'
 services:
 
   db:
-    image: postgres
+    image: postgres    server_name test-site.ddns.net;
     ports:
       - "5432:5432"
     volumes:
