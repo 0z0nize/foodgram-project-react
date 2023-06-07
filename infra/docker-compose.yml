@@ -57,9 +57,7 @@ services:
     volumes:
       - etc-letsencrypt:/etc/letsencrypt
       - www-html:/var/www/html
-    # command: certonly --webroot --webroot-path=/var/www/html
-    #          --email ozonize@mail.ru --agree-tos --no-eff-email
-    #          -d test-site.ddns.net
+    # command: certonly --webroot --webroot-path=/var/www/html --email ozonize@mail.ru --agree-tos --no-eff-email -d test-site.ddns.net
 
 volumes:
   db_value:
