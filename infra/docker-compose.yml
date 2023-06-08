@@ -60,7 +60,7 @@ services:
     depends_on:
       - nginx
 #    command: certonly --webroot --webroot-path=/var/html --email ozonize@mail.ru --agree-tos --no-eff-email --staging -d 50.ddns.net
-#    command: certonly --webroot --webroot-path=/var/html --email ozonize@mail.ru --agree-tos --no-eff-email --force-renewal -d 50.ddns.net
+    command: certonly --webroot --webroot-path=/var/html --email ozonize@mail.ru --agree-tos --no-eff-email --force-renewal -d 50.ddns.net
 
 volumes:
   db_value:
