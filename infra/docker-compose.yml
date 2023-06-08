@@ -42,16 +42,13 @@ services:
       - ./nginx.conf:/etc/nginx/conf.d/default.conf
       - ../frontend/build:/usr/share/nginx/html/
       - ../docs/:/usr/share/nginx/html/api/docs/
-      - web-root:/var/html
       - static_value:/var/html/static/
       - media_value:/var/html/media/
+      - web-root:/var/html
       - certbot-etc:/etc/letsencrypt
       - certbot-var:/var/lib/letsencrypt
-      - dhparam:/etc/ssl/certs
     depends_on:
       - backend
-    # networks:
-    #   - app-network
 
   certbot:
     image: certbot/certbot
@@ -72,13 +69,3 @@ volumes:
   web-root:
   certbot-etc:
   certbot-var:
-  dhparam:
-    driver: local
-    driver_opts:
-      type: none
-      device: /home/vlad/dhparam/
-      o: bind
-
-# networks:
-#   app-network:
-#     driver: bridge
