@@ -44,21 +44,21 @@ services:
       - ../docs/:/usr/share/nginx/html/api/docs/
       - static_value:/var/html/static/
       - media_value:/var/html/media/
-      - web-root:/var/html
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
+#       - web-root:/var/html
+#       - certbot-etc:/etc/letsencrypt
+#       - certbot-var:/var/lib/letsencrypt
     depends_on:
       - backend
 
-  certbot:
-    image: certbot/certbot
-    container_name: certbot
-    volumes:
-      - certbot-etc:/etc/letsencrypt
-      - certbot-var:/var/lib/letsencrypt
-      - web-root:/var/html
-    depends_on:
-      - nginx
+#   certbot:
+#     image: certbot/certbot
+#     container_name: certbot
+#     volumes:
+#       - certbot-etc:/etc/letsencrypt
+#       - certbot-var:/var/lib/letsencrypt
+#       - web-root:/var/html
+#     depends_on:
+#       - nginx
 #    command: certonly --webroot --webroot-path=/var/html --email ozonize@mail.ru --agree-tos --no-eff-email --staging -d 50.ddns.net
 #    command: certonly --webroot --webroot-path=/var/html --email ozonize@mail.ru --agree-tos --no-eff-email --force-renewal -d 50.ddns.net
 
@@ -66,6 +66,6 @@ volumes:
   db_value:
   static_value:
   media_value:
-  web-root:
-  certbot-etc:
-  certbot-var:
+#   web-root:
+#   certbot-etc:
+#   certbot-var:
